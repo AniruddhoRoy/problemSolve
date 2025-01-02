@@ -1,27 +1,40 @@
 #include <stdio.h>
-int solve(char arr[], int n)
+void solve(char arr[])
 {
-    int f = 0;
-    int s = 0;
+    int res = 0;
     int count = 0;
-    for (int i = 0; i < 7; i++)
+    char arr1[3];
+    arr1[2] = '\0';
+    for (int i = 0; arr[i] != '\0'; i++)
     {
-        for (int j = i + 1; j < 7; j++)
+
+        for (int j = 0; arr[j] != '\0'; j++)
         {
-            if (arr[i] == arr[j + 2] && arr[i + 1] == arr[j + 3])
+            if (arr[i] == arr[j] && arr[i + 1] == arr[j + 1])
             {
                 count++;
             }
         }
+        if (count > res)
+        {
+            res = count;
+            arr1[0] = arr[i];
+            arr1[1] = arr[i + 1];
+            // printf("%s %d\n", arr1, count);
+        }
+
+        count = 0;
     }
+    printf("%c%c", arr1[0], arr1[1]);
 }
 int main()
 {
     int n;
     scanf("%d", &n);
     getchar();
-    char str[n + 2];
-    gets(str);
-
+    char arr[n + 2];
+    gets(arr);
+    // printf("%s", arr);
+    solve(arr);
     return 0;
 }
