@@ -1,0 +1,1 @@
+result = max(result, (s1.size() + s2.size()));
